@@ -1,0 +1,16 @@
+---
+- name: settup pipeline
+  hosts: localhost
+  connection: local
+  gather_facts: true
+  pre_tasks:
+  - name: validate accounts
+    import_tasks: "_validate_accounts.yml"
+  tasks:
+    - name: create pipeline
+    include_role:
+      name: deploy_pipeline
+    vars:
+      github_user:
+      destination_accounts:
+      mailid:
